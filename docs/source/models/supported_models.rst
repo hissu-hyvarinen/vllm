@@ -118,9 +118,9 @@ Text Generation (``--task generate``)
     - :code:`THUDM/chatglm2-6b`, :code:`THUDM/chatglm3-6b`, etc.
     - ✅︎
     - ✅︎
-  * - :code:`CohereForCausalLM`
+  * - :code:`CohereForCausalLM`,:code:`Cohere2ForCausalLM`
     - Command-R
-    - :code:`CohereForAI/c4ai-command-r-v01`, etc.
+    - :code:`CohereForAI/c4ai-command-r-v01`, :code:`CohereForAI/c4ai-command-r7b-12-2024`, etc.
     - ✅︎
     - ✅︎
   * - :code:`DbrxForCausalLM`
@@ -201,6 +201,11 @@ Text Generation (``--task generate``)
   * - :code:`GraniteMoeForCausalLM`
     - Granite 3.0 MoE, PowerMoE
     - :code:`ibm-granite/granite-3.0-1b-a400m-base`, :code:`ibm-granite/granite-3.0-3b-a800m-instruct`, :code:`ibm/PowerMoE-3b`, etc.
+    - ✅︎
+    - ✅︎
+  * - :code:`GritLM`
+    - GritLM
+    - :code:`parasail-ai/GritLM-7B-vllm`.
     - ✅︎
     - ✅︎
   * - :code:`InternLMForCausalLM`
@@ -394,6 +399,11 @@ The following table lists those that are tested in vLLM.
     - Gemma2-based
     - :code:`BAAI/bge-multilingual-gemma2`, etc.
     - 
+    - ✅︎
+  * - :code:`GritLM`
+    - GritLM
+    - :code:`parasail-ai/GritLM-7B-vllm`.
+    - ✅︎
     - ✅︎
   * - :code:`LlamaModel`, :code:`LlamaForCausalLM`, :code:`MistralModel`, etc.
     - Llama-based
@@ -654,9 +664,9 @@ Text Generation (``--task generate``)
     - ✅︎
     - ✅︎
   * - :code:`PaliGemmaForConditionalGeneration`
-    - PaliGemma
+    - PaliGemma, PaliGemma 2
     - T + I\ :sup:`E`
-    - :code:`google/paligemma-3b-pt-224`, :code:`google/paligemma-3b-mix-224`, etc.
+    - :code:`google/paligemma-3b-pt-224`, :code:`google/paligemma-3b-mix-224`, :code:`google/paligemma2-3b-ft-docci-448`, etc.
     - 
     - ✅︎
     - 
