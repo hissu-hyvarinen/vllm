@@ -8,6 +8,7 @@ import torch
 from vllm.config import (CacheConfig, KVTransferConfig, ModelConfig,
                          SchedulerConfig, SpeculativeConfig, VllmConfig)
 from vllm.multimodal.inputs import MultiModalKwargs, PlaceholderRange
+from vllm.platforms import current_platform
 from vllm.sampling_params import SamplingParams
 from vllm.v1.core.sched.output import SchedulerOutput
 from vllm.v1.core.sched.scheduler import Scheduler
@@ -432,7 +433,8 @@ def test_schedule_concurrent_partial_requests(enable_prefix_caching: bool):
     assert output2.num_scheduled_tokens[
         requests[2].request_id] == 800 - 224 - 224
 
-
+@pytest.mark.skipif(current_platform.is_rocm(),
+                    reason="Speculative decoding is not yet supported on vLLM V1 for ROCm.")
 def test_stop_via_update_from_output():
     """Test stopping behavior through update_from_output"""
     scheduler = create_scheduler(num_speculative_tokens=1)
@@ -685,6 +687,8 @@ def test_schedule_concurrent_batches(enable_prefix_caching: Optional[bool],
 
 
 # Note - these test cases mirror some of those in test_rejection_sampler.py
+@pytest.mark.skipif(current_platform.is_rocm(),
+                    reason="Speculative decoding is not yet supported on vLLM V1 for ROCm.")
 @pytest.mark.parametrize(
     "spec_tokens,output_tokens,expected",
     [
