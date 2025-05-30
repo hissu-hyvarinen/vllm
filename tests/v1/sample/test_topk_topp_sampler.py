@@ -1,19 +1,23 @@
 # SPDX-License-Identifier: Apache-2.0
 import pytest
 import torch
-from flashinfer.sampling import top_k_renorm_probs, top_p_renorm_probs
 from torch import Generator
 
 from vllm.platforms import current_platform
 from vllm.v1.sample.ops.topk_topp_sampler import (apply_top_k_top_p,
                                                   is_flashinfer_available)
 
+FLASHINFER_ENABLED = current_platform.is_cuda() and is_flashinfer_available
+
+try:
+    from flashinfer.sampling import top_k_renorm_probs, top_p_renorm_probs
+except ImportError:
+    pass
+
 DEVICE = "cuda"
 
 BATCH_SIZE = 1024
 VOCAB_SIZE = 128 * 1024
-
-FLASHINFER_ENABLED = current_platform.is_cuda() and is_flashinfer_available
 
 
 def test_topk_impl_equivalance():
