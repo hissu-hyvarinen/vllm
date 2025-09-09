@@ -99,7 +99,7 @@ def test_api_server(api_server, distributed_executor_backend: str):
 
         # check cancellation stats
         # give it some time to update the stats
-        time.sleep(1)
+        time.sleep(3)
 
         num_aborted_requests = requests.get(
             "http://localhost:8000/stats").json()["num_aborted_requests"]
