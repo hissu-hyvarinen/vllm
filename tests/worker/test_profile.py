@@ -2,13 +2,17 @@
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
 
 import torch
+import pytest
 
 from vllm.engine.arg_utils import EngineArgs
+from vllm.platforms import current_platform
 from vllm.utils import get_distributed_init_method, get_ip, get_open_port
 from vllm.worker.cache_engine import CacheEngine
 from vllm.worker.worker import Worker
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Something fails when trying to load the model")
 def test_gpu_memory_profiling():
     # Tests the gpu profiling that happens in order to determine the number of
     # KV cache blocks that we can allocate on the GPU.

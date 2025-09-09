@@ -479,7 +479,8 @@ def test_prepare_decode(batch_size, multiple_seqs_per_seq_group):
     )
     assert torch.equal(actual, expected)
 
-
+@pytest.mark.skipif(current_platform.is_rocm(),
+                    reason="Encoder Decoder models not supported on ROCm.")
 @pytest.mark.parametrize("batch_size", list(range(1, 257)))
 @pytest.mark.parametrize("multiple_seqs_per_seq_group", [True, False])
 def test_prepare_decode_cuda_graph(batch_size, multiple_seqs_per_seq_group):
