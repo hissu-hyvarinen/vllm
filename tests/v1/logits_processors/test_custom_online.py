@@ -21,6 +21,8 @@ from tests.v1.logits_processors.utils import (DUMMY_LOGITPROC_ARG,
 from tests.v1.logits_processors.utils import entry_points as fake_entry_points
 from tests.v1.logits_processors.utils import prompts
 
+from vllm.platforms import current_platform
+
 # yapf: enable
 
 
@@ -124,7 +126,9 @@ api_keyword_args = {
     "logprobs": 0,
 }
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="DummyModule not found")
 @create_new_process_for_each_test()
 @pytest.mark.asyncio
 @pytest.mark.parametrize(
