@@ -4,6 +4,7 @@
 import math
 from typing import Optional
 
+import pytest
 import torch
 
 from tests.v1.attention.utils import (_Backend, create_standard_kv_cache_spec,
