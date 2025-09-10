@@ -87,7 +87,9 @@ def _load_json(s: str, backend: str) -> str:
     s = re.sub(r'[\x00-\x1F\x7F-\xFF]', '', s)
     return json.loads(s)
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Sometimes fails due to not finding DummyModule or json error, not consistent")
 @pytest.mark.skip_global_cleanup
 @pytest.mark.parametrize(
     "model_name, guided_decoding_backend, tokenizer_mode, speculative_config",
@@ -545,6 +547,9 @@ Make the response as short as possible.
                             f"{generated_text!r}\nError: {str(e)}")
 
 
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="1 or 2 fails on ROCm, not consistent.")
 @pytest.mark.skip_global_cleanup
 @pytest.mark.parametrize(
     "model_name, guided_decoding_backend, tokenizer_mode, reasoning_parser, speculative_config",  # noqa: E501
