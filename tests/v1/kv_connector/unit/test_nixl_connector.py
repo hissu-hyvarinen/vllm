@@ -478,7 +478,7 @@ class TestNixlHandshake:
 # the rest of the tests.
 @pytest.mark.xfail(
     current_platform.is_rocm(),
-    reason="Fails on ROCm: no HIP GPU found")
+    reason="Both iterations fail on ROCm: ray module not found & not enough free memory")
 @pytest.mark.parametrize("distributed_executor_backend", ["ray", None])
 @patch(
     "vllm.distributed.kv_transfer.kv_connector.v1.nixl_connector.NixlWrapper",
