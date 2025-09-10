@@ -193,6 +193,10 @@ def test_eagle_correctness(
 
         method, model_name, spec_model_name, tp_size = model_setup
 
+        if (spec_model_name == "eagle618/eagle-deepseek-v3-random"
+                and current_platform.is_rocm()):
+            pytest.skip("Head size 192 not supported by AITER FA")
+
         ref_llm = LLM(model=model_name,
                       max_model_len=2048,
                       tensor_parallel_size=tp_size)
