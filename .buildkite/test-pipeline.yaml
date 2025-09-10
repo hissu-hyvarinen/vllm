@@ -66,7 +66,7 @@ steps:
 
 - label: Python-only Installation Test # 10min
   timeout_in_minutes: 20
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - tests/standalone_tests/python_only_compile.sh
   - setup.py
@@ -75,7 +75,7 @@ steps:
 
 - label: Basic Correctness Test # 20min
   timeout_in_minutes: 30
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   fast_check: true
   torch_nightly: true
   source_file_dependencies:
@@ -104,7 +104,7 @@ steps:
 
 - label: Entrypoints Test (LLM) # 30min
   timeout_in_minutes: 40
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   fast_check: true
   torch_nightly: true
@@ -121,7 +121,7 @@ steps:
 
 - label: Entrypoints Test (API Server) # 100min
   timeout_in_minutes: 130
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   fast_check: true
   torch_nightly: true
@@ -137,7 +137,7 @@ steps:
 
 - label: Distributed Tests (4 GPUs) # 35min
   timeout_in_minutes: 50
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   num_gpus: 4
   source_file_dependencies:
@@ -231,7 +231,7 @@ steps:
 
 - label: Engine Test # 25min
   timeout_in_minutes: 40
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - vllm/
   - tests/engine
@@ -293,7 +293,7 @@ steps:
 
 - label: Examples Test # 30min
   timeout_in_minutes: 45
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/examples"
   source_file_dependencies:
   - vllm/entrypoints
@@ -340,7 +340,7 @@ steps:
 
 - label: LoRA Test %N # 20min each
   timeout_in_minutes: 30
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - vllm/lora
   - tests/lora
@@ -355,7 +355,7 @@ steps:
 
 - label: PyTorch Compilation Unit Tests # 15min
   timeout_in_minutes: 30
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   torch_nightly: true
   source_file_dependencies:
     - vllm/
@@ -372,7 +372,7 @@ steps:
 
 - label: PyTorch Fullgraph Smoke Test # 15min
   timeout_in_minutes: 30
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   torch_nightly: true
   source_file_dependencies:
   - vllm/
@@ -406,7 +406,7 @@ steps:
 
 - label: Kernels Attention Test %N # 23min
   timeout_in_minutes: 35
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/attention/
   - vllm/attention
@@ -418,7 +418,7 @@ steps:
 
 - label: Kernels Quantization Test %N # 64min
   timeout_in_minutes: 90
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/quantization/
   - vllm/model_executor/layers/quantization
@@ -429,7 +429,7 @@ steps:
 
 - label: Kernels MoE Test %N # 40min
   timeout_in_minutes: 60
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/quantization/cutlass_w8a8/moe/
   - csrc/moe/
@@ -493,7 +493,7 @@ steps:
 
 - label: Quantization Test # 70min
   timeout_in_minutes: 90
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/
   - vllm/model_executor/layers/quantization
@@ -506,7 +506,7 @@ steps:
 
 - label: LM Eval Small Models # 53min
   timeout_in_minutes: 75
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/
   - vllm/model_executor/layers/quantization
@@ -515,7 +515,7 @@ steps:
 
 - label: OpenAI API correctness # 22min
   timeout_in_minutes: 30
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/
   - vllm/entrypoints/openai/
@@ -548,7 +548,7 @@ steps:
 
 - label: Basic Models Test # 57min
   timeout_in_minutes: 75
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   torch_nightly: true
   source_file_dependencies:
   - vllm/
@@ -562,7 +562,7 @@ steps:
 
 - label: Language Models Test (Standard) # 35min
   timeout_in_minutes: 45
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   torch_nightly: true
   source_file_dependencies:
   - vllm/
@@ -573,7 +573,7 @@ steps:
 
 - label: Language Models Test (Hybrid) # 35 min
   timeout_in_minutes: 45
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   torch_nightly: true
   source_file_dependencies:
   - vllm/
@@ -587,7 +587,7 @@ steps:
 
 - label: Language Models Test (Extended Generation) # 80min
   timeout_in_minutes: 110
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   optional: true
   source_file_dependencies:
   - vllm/
@@ -599,7 +599,7 @@ steps:
 
 - label: Language Models Test (Extended Pooling)  # 36min
   timeout_in_minutes: 50
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   optional: true
   source_file_dependencies:
   - vllm/
@@ -618,7 +618,7 @@ steps:
 
 - label: Multi-Modal Models Test (Standard) # 60min
   timeout_in_minutes: 80
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   torch_nightly: true
   source_file_dependencies:
   - vllm/
@@ -630,7 +630,7 @@ steps:
     - cd .. && pytest -v -s tests/models/multimodal/generation/test_whisper.py -m core_model  # Otherwise, mp_method="spawn" doesn't work
 
 - label: Multi-Modal Models Test (Extended) 1
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   optional: true
   source_file_dependencies:
   - vllm/
@@ -640,7 +640,7 @@ steps:
     - pytest -v -s models/multimodal -m 'not core_model' --ignore models/multimodal/generation/test_common.py --ignore models/multimodal/processing
 
 - label: Multi-Modal Models Test (Extended) 2
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   optional: true
   source_file_dependencies:
   - vllm/
@@ -650,7 +650,7 @@ steps:
     - pytest -v -s models/multimodal/generation/test_common.py -m 'split(group=0) and not core_model'
 
 - label: Multi-Modal Models Test (Extended) 3
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   optional: true
   source_file_dependencies:
   - vllm/
@@ -661,7 +661,7 @@ steps:
 
 - label: Quantized Models Test # 45 min
   timeout_in_minutes: 60
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - vllm/model_executor/layers/quantization
   - tests/models/quantization
@@ -746,7 +746,7 @@ steps:
 
 - label: 2 Node Tests (4 GPUs in total) # 16min
   timeout_in_minutes: 30
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   num_gpus: 2
   num_nodes: 2
@@ -771,7 +771,7 @@ steps:
 
 - label: Distributed Tests (2 GPUs) # 110min
   timeout_in_minutes: 150
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   num_gpus: 2
   source_file_dependencies:
@@ -812,7 +812,7 @@ steps:
 
 - label: Plugin Tests (2 GPUs) # 40min
   timeout_in_minutes: 60
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   num_gpus: 2
   source_file_dependencies:
@@ -873,7 +873,7 @@ steps:
 
 - label: Weight Loading Multiple GPU Test  # 33min
   timeout_in_minutes: 45
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   num_gpus: 2 
   optional: true
@@ -884,7 +884,7 @@ steps:
     - bash weight_loading/run_model_weight_loading_test.sh -c weight_loading/models.txt
 
 - label: Weight Loading Multiple GPU Test - Large Models # optional
-  mirror_hardwares: [amdexperimental]
+  #mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   num_gpus: 2
   gpu: a100
