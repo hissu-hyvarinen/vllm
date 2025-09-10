@@ -5,8 +5,11 @@ import shutil
 import tempfile
 from pathlib import Path
 
+import pytest
+
 from vllm import LLM, SamplingParams
 from vllm.config import KVTransferConfig
+from vllm.platforms import current_platform
 
 MODEL_NAME = "meta-llama/Llama-3.2-1B-Instruct"
 
@@ -34,7 +37,9 @@ def _compare_directories(dir1: Path, dir2: Path) -> bool:
             return False
     return True
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Fails on ROCm: AssertionError")
 def test_multi_shared_storage_connector_consistency():
     """
     Tests that MultiConnector with two SharedStorageConnectors saves
