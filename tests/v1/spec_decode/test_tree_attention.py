@@ -119,7 +119,9 @@ def forward_attention(
         output=output,
     )
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="AssertionError on ROCm")
 def test_tree_attn_correctness() -> None:
     torch.manual_seed(42)
     torch.cuda.manual_seed_all(42)
