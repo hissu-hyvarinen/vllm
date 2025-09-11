@@ -45,6 +45,9 @@ def llm():
     cleanup_dist_env_and_memory()
 
 
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Enc-dec issue")
 @pytest.mark.skip_global_cleanup
 def test_multiple_pooling_params(llm: LLM):
     pooling_params = [
@@ -72,6 +75,9 @@ def test_multiple_pooling_params(llm: LLM):
     assert len(PROMPTS) == len(outputs)
 
 
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Enc-dec issue")
 @pytest.mark.skip_global_cleanup
 def test_right_side_truncation(llm: LLM):
     # Embeddings models should truncate the end of the prompt

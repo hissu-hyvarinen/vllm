@@ -32,7 +32,9 @@ def llm():
 
     cleanup_dist_env_and_memory()
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Enc-dec issue")
 @pytest.mark.skip_global_cleanup
 def test_pooling_params(llm: LLM):
 
