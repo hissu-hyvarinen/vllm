@@ -75,7 +75,7 @@ steps:
 
 - label: Basic Correctness Test # 20min
   timeout_in_minutes: 30
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   fast_check: true
   torch_nightly: true
   source_file_dependencies:
@@ -104,7 +104,7 @@ steps:
 
 - label: Entrypoints Test (LLM) # 30min
   timeout_in_minutes: 40
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   fast_check: true
   torch_nightly: true
@@ -121,7 +121,7 @@ steps:
 
 - label: Entrypoints Test (API Server) # 100min
   timeout_in_minutes: 130
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   fast_check: true
   torch_nightly: true
@@ -137,7 +137,7 @@ steps:
 
 - label: Distributed Tests (4 GPUs) # 35min
   timeout_in_minutes: 50
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   num_gpus: 4
   source_file_dependencies:
@@ -231,7 +231,7 @@ steps:
 
 - label: Engine Test # 25min
   timeout_in_minutes: 40
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - vllm/
   - tests/engine
@@ -340,7 +340,7 @@ steps:
 
 - label: LoRA Test %N # 20min each
   timeout_in_minutes: 30
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - vllm/lora
   - tests/lora
@@ -418,7 +418,7 @@ steps:
 
 - label: Kernels Quantization Test %N # 64min
   timeout_in_minutes: 90
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/quantization/
   - vllm/model_executor/layers/quantization
@@ -429,7 +429,7 @@ steps:
 
 - label: Kernels MoE Test %N # 40min
   timeout_in_minutes: 60
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/quantization/cutlass_w8a8/moe/
   - csrc/moe/
