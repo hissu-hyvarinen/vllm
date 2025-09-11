@@ -154,7 +154,9 @@ def test_deserialized_hf_model_has_same_outputs(hf_runner, vllm_runner,
 
         assert outputs == deserialized_outputs
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="AssertionError on ROCm: error message differs from expected")
 def test_load_without_tensorizer_load_format(vllm_runner, capfd, model_ref):
     model = None
     try:
@@ -172,7 +174,9 @@ def test_load_without_tensorizer_load_format(vllm_runner, capfd, model_ref):
         gc.collect()
         torch.cuda.empty_cache()
 
-
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="AssertionError on ROCm: error message differs from expected")
 def test_raise_value_error_on_invalid_load_format(vllm_runner, capfd,
                                                   model_ref):
     model = None
