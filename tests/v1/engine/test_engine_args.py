@@ -62,8 +62,8 @@ def test_defaults_with_usage_context():
 
     from vllm.platforms import current_platform
     device_name = current_platform.get_device_name().lower()
-    if "h100" in device_name or "h200" in device_name or "mi300" in device_name:
-        # For H100 and H200, we use larger default values.
+    if "h100" in device_name or "h200" in device_name or "mi3" in device_name:
+        # For H100 and H200 as well as MI3xx, we use larger default values.
         default_llm_tokens = 16384
         default_server_tokens = 8192
         default_max_num_seqs = 1024
