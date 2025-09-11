@@ -632,6 +632,9 @@ def test_structured_output_with_reasoning_matrices(
     jsonschema.validate(instance=output_json, schema=reasoning_schema)
 
 
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Insufficient free memory on device on startup")
 @pytest.mark.skip_global_cleanup
 @pytest.mark.parametrize("model_name, tokenizer_mode",
                          PARAMS_MODELS_TOKENIZER_MODE)
@@ -680,6 +683,9 @@ def test_structured_output_auto_mode(
         assert isinstance(parsed_json, dict)
 
 
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Insufficient free memory on device on startup")
 @pytest.mark.skip_global_cleanup
 def test_guidance_no_additional_properties(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setenv("VLLM_USE_V1", "1")
@@ -741,6 +747,9 @@ def test_guidance_no_additional_properties(monkeypatch: pytest.MonkeyPatch):
     assert "a6" not in generated
 
 
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Insufficient free memory on device on startup")
 @pytest.mark.parametrize("guided_decoding_backend",
                          ["guidance", "xgrammar", "outlines"])
 def test_structured_output_batched_with_non_guided_requests(
