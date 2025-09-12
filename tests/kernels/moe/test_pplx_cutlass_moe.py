@@ -253,6 +253,9 @@ def _pplx_moe(
     (lambda x: x is None or not ops.cutlass_group_gemm_supported(x.to_int()))(
         current_platform.get_device_capability()),
     reason="Grouped gemm is not supported on this GPU type.")
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Uses a dependency that's missing on ROCm")
 @requires_pplx
 def test_cutlass_moe_pplx(
     m: int,
