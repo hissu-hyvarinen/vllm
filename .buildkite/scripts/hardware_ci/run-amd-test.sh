@@ -183,6 +183,9 @@ fi
 PARALLEL_JOB_COUNT=8
 MYPYTHONPATH=".."
 
+# make all commands execute regardless of any previous command's exit status 
+commands=${commands//"&&"/";"}
+
 # check if the command contains shard flag, we will run all shards in parallel because the host have 8 GPUs. 
 if [[ $commands == *"--shard-id="* ]]; then
   # assign job count as the number of shards used   
