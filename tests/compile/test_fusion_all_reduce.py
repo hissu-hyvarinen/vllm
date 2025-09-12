@@ -6,7 +6,6 @@ import pytest
 import torch
 
 import vllm.envs as envs
-from vllm.compilation.collective_fusion import AllReduceFusionPass
 from vllm.compilation.fix_functionalization import FixFunctionalizationPass
 from vllm.compilation.noop_elimination import NoOpEliminationPass
 from vllm.config import (CompilationConfig, CompilationLevel, DeviceConfig,
@@ -22,6 +21,9 @@ from vllm.utils import update_environment_variables
 
 from ..utils import has_module_attribute, multi_gpu_test
 from .backend import TestBackend
+
+if not current_platform.is_rocm():
+    from vllm.compilation.collective_fusion import AllReduceFusionPass
 
 
 class TestAllReduceRMSNormModel(torch.nn.Module):

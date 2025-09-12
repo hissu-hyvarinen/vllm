@@ -249,13 +249,13 @@ def _pplx_moe(
 @pytest.mark.parametrize("world_dp_size", [[2, 1]])  #, [4, 2]])
 @pytest.mark.parametrize("use_internode", [False])
 @multi_gpu_test(num_gpus=2)
+@pytest.mark.xfail(
+    current_platform.is_rocm(),
+    reason="Uses a dependency that's missing on ROCm")
 @pytest.mark.skipif(
     (lambda x: x is None or not ops.cutlass_group_gemm_supported(x.to_int()))(
         current_platform.get_device_capability()),
     reason="Grouped gemm is not supported on this GPU type.")
-@pytest.mark.xfail(
-    current_platform.is_rocm(),
-    reason="Uses a dependency that's missing on ROCm")
 @requires_pplx
 def test_cutlass_moe_pplx(
     m: int,
