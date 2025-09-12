@@ -7,7 +7,6 @@ import pytest
 import torch
 
 import vllm.envs as envs
-from vllm.compilation.collective_fusion import AsyncTPPass
 from vllm.config import (CompilationConfig, DeviceConfig, ModelConfig,
                          PassConfig, VllmConfig)
 from vllm.distributed import (tensor_model_parallel_all_gather,
@@ -23,6 +22,9 @@ from ..utils import (compare_two_settings, create_new_process_for_each_test,
 from .backend import TestBackend
 
 FP8_DTYPE = current_platform.fp8_dtype()
+
+if not current_platform.is_rocm():
+    from vllm.compilation.collective_fusion import AsyncTPPass
 
 prompts = [
     "Hello, my name is",
