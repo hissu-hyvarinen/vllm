@@ -30,3 +30,6 @@ blobfile==3.0.0
 
 # Entrypoints (API)
 schemathesis==3.39.15
+
+OpenAI API Correctness
+mteb==1.38.11
