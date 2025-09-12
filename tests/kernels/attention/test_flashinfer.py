@@ -3,7 +3,6 @@
 
 from typing import Optional
 
-import flashinfer
 import pytest
 import torch
 
@@ -17,6 +16,11 @@ NUM_BLOCKS = 32768  # Large enough to test overflow in index calculation.
 SOFT_CAPS = [None, 30.0]
 SLIDING_WINDOWS = [None, 64]
 
+if current_platform.is_rocm():
+    pytest.skip("Flashinfer not supported on ROCm",
+    allow_module_level=True)
+
+import flashinfer
 
 def ref_paged_attn(
     query: torch.Tensor,
