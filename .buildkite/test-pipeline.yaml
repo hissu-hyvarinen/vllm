@@ -340,7 +340,7 @@ steps:
 
 - label: LoRA Test %N # 20min each
   timeout_in_minutes: 30
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - vllm/lora
   - tests/lora
@@ -510,7 +510,7 @@ steps:
 
 - label: OpenAI API correctness # 22min
   timeout_in_minutes: 30
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/
   - vllm/entrypoints/openai/
@@ -557,7 +557,7 @@ steps:
 
 - label: Language Models Test (Standard) # 35min
   timeout_in_minutes: 45
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   torch_nightly: true
   source_file_dependencies:
   - vllm/
