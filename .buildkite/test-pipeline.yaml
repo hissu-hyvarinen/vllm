@@ -104,7 +104,7 @@ steps:
 
 - label: Entrypoints Test (LLM) # 30min
   timeout_in_minutes: 40
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   fast_check: true
   torch_nightly: true
@@ -121,7 +121,7 @@ steps:
 
 - label: Entrypoints Test (API Server) # 100min
   timeout_in_minutes: 130
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   working_dir: "/vllm-workspace/tests"
   fast_check: true
   torch_nightly: true
@@ -392,7 +392,7 @@ steps:
 
 - label: Kernels Core Operation Test # 48min
   timeout_in_minutes: 75
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/
   - tests/kernels/core
@@ -413,7 +413,7 @@ steps:
 
 - label: Kernels Quantization Test %N # 64min
   timeout_in_minutes: 90
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/quantization/
   - vllm/model_executor/layers/quantization
@@ -437,7 +437,7 @@ steps:
 
 - label: Kernels Mamba Test # 31min
   timeout_in_minutes: 45
-  #mirror_hardwares: [amdexperimental]
+  mirror_hardwares: [amdexperimental]
   source_file_dependencies:
   - csrc/mamba/
   - tests/kernels/mamba
