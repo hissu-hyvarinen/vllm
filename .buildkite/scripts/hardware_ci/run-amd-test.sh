@@ -99,73 +99,73 @@ if [[ $commands == *"pytest -v -s lora"* ]]; then
 fi
 
 #ignore certain kernels tests
-if [[ $commands == *" kernels/core"* ]]; then
-  commands="${commands} \
-  --ignore=kernels/core/test_fused_quant_layernorm.py \
-  --ignore=kernels/core/test_permute_cols.py"
-fi
+# if [[ $commands == *" kernels/core"* ]]; then
+#   commands="${commands} \
+#   --ignore=kernels/core/test_fused_quant_layernorm.py \
+#   --ignore=kernels/core/test_permute_cols.py"
+# fi
 
-if [[ $commands == *" kernels/attention"* ]]; then
-  commands="${commands} \
-  --ignore=kernels/attention/test_attention_selector.py \
-  --ignore=kernels/attention/test_encoder_decoder_attn.py \
-  --ignore=kernels/attention/test_flash_attn.py \
-  --ignore=kernels/attention/test_flashinfer.py \
-  --ignore=kernels/attention/test_prefix_prefill.py \
-  --ignore=kernels/attention/test_cascade_flash_attn.py \
-  --ignore=kernels/attention/test_mha_attn.py \
-  --ignore=kernels/attention/test_lightning_attn.py \
-  --ignore=kernels/attention/test_attention.py"
-fi
+# if [[ $commands == *" kernels/attention"* ]]; then
+#   commands="${commands} \
+#   --ignore=kernels/attention/test_attention_selector.py \
+#   --ignore=kernels/attention/test_encoder_decoder_attn.py \
+#   --ignore=kernels/attention/test_flash_attn.py \
+#   --ignore=kernels/attention/test_flashinfer.py \
+#   --ignore=kernels/attention/test_prefix_prefill.py \
+#   --ignore=kernels/attention/test_cascade_flash_attn.py \
+#   --ignore=kernels/attention/test_mha_attn.py \
+#   --ignore=kernels/attention/test_lightning_attn.py \
+#   --ignore=kernels/attention/test_attention.py"
+# fi
 
-if [[ $commands == *" kernels/quantization"* ]]; then
-  commands="${commands} \
-  --ignore=kernels/quantization/test_int8_quant.py \
-  --ignore=kernels/quantization/test_machete_mm.py \
-  --ignore=kernels/quantization/test_block_fp8.py \
-  --ignore=kernels/quantization/test_block_int8.py \
-  --ignore=kernels/quantization/test_marlin_gemm.py \
-  --ignore=kernels/quantization/test_cutlass_scaled_mm.py \
-  --ignore=kernels/quantization/test_int8_kernel.py"
-fi
+# if [[ $commands == *" kernels/quantization"* ]]; then
+#   commands="${commands} \
+#   --ignore=kernels/quantization/test_int8_quant.py \
+#   --ignore=kernels/quantization/test_machete_mm.py \
+#   --ignore=kernels/quantization/test_block_fp8.py \
+#   --ignore=kernels/quantization/test_block_int8.py \
+#   --ignore=kernels/quantization/test_marlin_gemm.py \
+#   --ignore=kernels/quantization/test_cutlass_scaled_mm.py \
+#   --ignore=kernels/quantization/test_int8_kernel.py"
+# fi
 
-if [[ $commands == *" kernels/mamba"* ]]; then
-  commands="${commands} \
-  --ignore=kernels/mamba/test_mamba_mixer2.py \
-  --ignore=kernels/mamba/test_causal_conv1d.py \
-  --ignore=kernels/mamba/test_mamba_ssm_ssd.py"
-fi
+# if [[ $commands == *" kernels/mamba"* ]]; then
+#   commands="${commands} \
+#   --ignore=kernels/mamba/test_mamba_mixer2.py \
+#   --ignore=kernels/mamba/test_causal_conv1d.py \
+#   --ignore=kernels/mamba/test_mamba_ssm_ssd.py"
+# fi
 
-if [[ $commands == *" kernels/moe"* ]]; then
-  commands="${commands} \
-  --ignore=kernels/moe/test_moe.py \
-  --ignore=kernels/moe/test_cutlass_moe.py \
-  --ignore=kernels/moe/test_triton_moe_ptpc_fp8.py"
-fi
+# if [[ $commands == *" kernels/moe"* ]]; then
+#   commands="${commands} \
+#   --ignore=kernels/moe/test_moe.py \
+#   --ignore=kernels/moe/test_cutlass_moe.py \
+#   --ignore=kernels/moe/test_triton_moe_ptpc_fp8.py"
+# fi
 
-#ignore certain Entrypoints/openai tests
-if [[ $commands == *" entrypoints/openai "* ]]; then
-  commands=${commands//" entrypoints/openai "/" entrypoints/openai \
-  --ignore=entrypoints/openai/test_audio.py \
-  --ignore=entrypoints/openai/test_shutdown.py \
-  --ignore=entrypoints/openai/test_completion.py \
-  --ignore=entrypoints/openai/test_sleep.py \
-  --ignore=entrypoints/openai/test_models.py \
-  --ignore=entrypoints/openai/test_lora_adapters.py \
-  --ignore=entrypoints/openai/test_return_tokens_as_ids.py \
-  --ignore=entrypoints/openai/test_root_path.py \
-  --ignore=entrypoints/openai/test_tokenization.py \
-  --ignore=entrypoints/openai/test_prompt_validation.py "}
-fi
+# #ignore certain Entrypoints/openai tests
+# if [[ $commands == *" entrypoints/openai "* ]]; then
+#   commands=${commands//" entrypoints/openai "/" entrypoints/openai \
+#   --ignore=entrypoints/openai/test_audio.py \
+#   --ignore=entrypoints/openai/test_shutdown.py \
+#   --ignore=entrypoints/openai/test_completion.py \
+#   --ignore=entrypoints/openai/test_sleep.py \
+#   --ignore=entrypoints/openai/test_models.py \
+#   --ignore=entrypoints/openai/test_lora_adapters.py \
+#   --ignore=entrypoints/openai/test_return_tokens_as_ids.py \
+#   --ignore=entrypoints/openai/test_root_path.py \
+#   --ignore=entrypoints/openai/test_tokenization.py \
+#   --ignore=entrypoints/openai/test_prompt_validation.py "}
+# fi
 
-#ignore certain Entrypoints/llm tests
-if [[ $commands == *" entrypoints/llm "* ]]; then
-  commands=${commands//" entrypoints/llm "/" entrypoints/llm \
-  --ignore=entrypoints/llm/test_chat.py \
-  --ignore=entrypoints/llm/test_accuracy.py \
-  --ignore=entrypoints/llm/test_init.py \
-  --ignore=entrypoints/llm/test_prompt_validation.py "}
-fi
+# #ignore certain Entrypoints/llm tests
+# if [[ $commands == *" entrypoints/llm "* ]]; then
+#   commands=${commands//" entrypoints/llm "/" entrypoints/llm \
+#   --ignore=entrypoints/llm/test_chat.py \
+#   --ignore=entrypoints/llm/test_accuracy.py \
+#   --ignore=entrypoints/llm/test_init.py \
+#   --ignore=entrypoints/llm/test_prompt_validation.py "}
+# fi
 
 #Obsolete currently
 ##ignore certain Entrypoints/llm tests
